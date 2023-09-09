@@ -25,7 +25,7 @@
                           <li><a class="dropdown-item" href="{{ url('/dashboard') }}">Dashboard</a></li>
                           @endif
                           <li><a class="dropdown-item" href="{{ url('/my-posts') }}">My Posts</a></li>
-                          <li><a class="dropdown-item" href="{{ url('/add-post') }}">Add Post</a></li>
+                          <li><a class="dropdown-item" href="{{ route('posts.create') }}">Add Post</a></li>
                           <li><hr class="dropdown-divider"></li>
 
                           <li><a class="dropdown-item" href="{{ url('/profile') }}">Profile</a></li>

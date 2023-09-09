@@ -26,7 +26,9 @@ class DatabaseSeeder extends Seeder
 
         $posts = [
                 [
+                    'slug' => 'the-art-of-digital-painting',
                     'title' => 'The Art of Digital Painting',
+
                     'short_content' => 'Unlock your creativity and explore the world of digital painting.',
                     'content' => 'Digital painting is a captivating art form that allows artists to create stunning visuals using digital tools and techniques. Whether you\'re an aspiring artist or a seasoned pro, the world of digital painting offers endless possibilities for creative expression.
 
@@ -49,6 +51,7 @@ class DatabaseSeeder extends Seeder
                     'categories' => ['Art', 'Digital Painting'],
                 ],
                 [
+                    'slug' => 'the-magic-of-astrophotography',
                     'title' => 'The Magic of Astrophotography',
                     'short_content' => 'Capture the beauty of the night sky with astrophotography.',
                     'content' => 'Astrophotography is a mesmerizing hobby that allows photographers to capture the breathtaking beauty of the night sky. From stunning shots of the Milky Way to close-ups of distant galaxies, astrophotography offers a unique perspective on the cosmos.
@@ -72,6 +75,7 @@ class DatabaseSeeder extends Seeder
                     'categories' => ['Photography', 'Astrophotography'],
                 ],
                 [
+                    'slug' => 'the-joy-of-gardening',
                     'title' => 'The Joy of Gardening: Cultivating Green Spaces',
                     'short_content' => 'Discover the therapeutic benefits of gardening and how to create your green oasis.',
                     'content' => 'Gardening is a delightful and therapeutic hobby that allows you to connect with nature, reduce stress, and create vibrant green spaces. Whether you have a large backyard, a modest patio, or a tiny balcony, gardening offers a world of possibilities for cultivating your own oasis of greenery.
@@ -119,7 +123,9 @@ class DatabaseSeeder extends Seeder
                     'categories' => ['Gardening', 'Wellness'],
                 ],
                 [
+
                     'title' => 'Exploring the World of Virtual Reality',
+                    'slug' => 'exploring-the-world-of-virtual-reality',
                     'short_content' => 'Dive into the immersive world of virtual reality (VR) and its exciting applications.',
                     'content' => 'Virtual reality (VR) is revolutionizing how we experience digital content by immersing us in entirely new worlds. Whether you\'re a gamer, a tech enthusiast, or just curious about this emerging technology, here\'s a journey into the fascinating world of VR.
 
@@ -158,7 +164,9 @@ class DatabaseSeeder extends Seeder
                     'categories' => ['Technology', 'Virtual Reality'],
                 ],
                 [
+
                     'title' => '10 Tips for Effective Time Management',
+                    'slug' => '10-tips-for-effective-time-management',
                     'short_content' => 'Master the art of time management with these valuable tips.',
                     'content' => "Effective time management is crucial for achieving your goals, reducing stress, and maximizing productivity. Whether you\'re a student, a professional, or a busy parent, mastering the art of time management can have a profound impact on your daily life. Here are ten valuable tips to help you make the most of your time:
 
@@ -195,7 +203,9 @@ class DatabaseSeeder extends Seeder
                     'categories' => ['Productivity', 'Time Management'],
                 ],
                 [
+
                     'title' => 'The Benefits of Regular Exercise',
+                    'slug' => 'the-benefits-of-regular-exercise',
                     'short_content' => 'Exercise for a healthier you - both physically and mentally.',
                     'content' => 'Regular exercise is not just about looking good; it\'s about feeling good and living a healthier life. Incorporating exercise into your daily routine offers a multitude of benefits for both your physical and mental well-being.
 
@@ -242,7 +252,9 @@ class DatabaseSeeder extends Seeder
                     'categories' => ['Health', 'Exercise'],
                 ],
                 [
+
                     'title' => 'Traveling on a Budget: 10 Money-Saving Tips',
+                    'slug' => 'traveling-on-a-budget-10-money-saving-tips',
                     'short_content' => 'Travel on a budget with these helpful tips!',
                     'content' => "Traveling is an enriching experience, but it doesn\'t have to drain your wallet. With careful planning and smart choices, you can explore new destinations without breaking the bank. Here are ten money-saving tips for budget travelers:
 
@@ -289,6 +301,7 @@ class DatabaseSeeder extends Seeder
                 ],
                 [
                     'title' => 'A Guide to Sustainable Living',
+                    'slug' => 'a-guide-to-sustainable-living',
                     'short_content' => 'Learn how to reduce your environmental impact and adopt a more sustainable lifestyle with simple yet impactful changes.',
                     'content' => 'As concerns about climate change and environmental sustainability grow, adopting a more sustainable lifestyle has become increasingly important. Whether you\'re taking your first steps or looking to enhance your sustainability efforts, here\'s a guide to help you reduce your environmental impact.
 
@@ -339,6 +352,7 @@ class DatabaseSeeder extends Seeder
                 ],
                 [
                     'title' => 'The Art of Mindfulness Meditation',
+                    'slug' => 'the-art-of-mindfulness-meditation',
                     'short_content' => 'Find peace and clarity through mindfulness meditation.',
                     'content' => "In our fast-paced and often chaotic world, finding moments of peace and clarity is essential for our mental and emotional well-being. Mindfulness meditation, a practice rooted in ancient traditions, offers a powerful way to achieve this state of tranquility.
 
@@ -393,6 +407,7 @@ class DatabaseSeeder extends Seeder
                     ],
                     [
                         'title' => '10 Delicious and Healthy Breakfast Recipes',
+                        'slug' => '10-delicious-and-healthy-breakfast-recipes',
                         'short_content' => 'Start your day with these nutritious and mouthwatering breakfast recipes that will keep you energized throughout the morning.',
                         'content' => 'A nutritious breakfast is the perfect way to kickstart your day with energy and vitality. Whether you prefer a hearty meal or a quick and easy option, these ten delicious and healthy breakfast recipes will satisfy your taste buds and fuel your body.
 
@@ -449,6 +464,7 @@ class DatabaseSeeder extends Seeder
         foreach ($posts as $post) {
             $post = Post::create([
                 'title' => $post['title'],
+                'slug' => $post['slug'],
                 'short_content' => $post['short_content'],
                 'content' => $post['content'],
                 'image' => 'https://source.unsplash.com/random/800x600',

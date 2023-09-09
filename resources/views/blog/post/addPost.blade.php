@@ -27,7 +27,7 @@
                         </div>
                     @endif
                     <div class="col-md-10 col-lg-8 col-xl-8">
-                        <form action="{{ route('blog.storePost') }}" method="POST"  enctype="multipart/form-data">
+                        <form action="{{ route('posts.store') }}" method="POST"  enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <select name="categories[]"  class="selectpicker form-control" data-placeholder="Choose Categories" multiple>
@@ -47,7 +47,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">short Content</label>
-                                <textarea class="form-control" name="short_content" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <textarea type="text" class="form-control" name="short_content" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Content</label>

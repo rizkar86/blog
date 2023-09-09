@@ -25,7 +25,7 @@
         <article class="mb-4">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
-                    @if(in_array(auth()->user()->id, $post->users->pluck('id')->toArray()))
+                    @if(Auth::check() &&  in_array(auth()->user()->id, $post->users->pluck('id')->toArray()))
                         <div class="col-md-10 col-lg-8 col-xl-8">
                             <div class="float-end mb-4">
                                 <a class="btn btn-primary" href="{{route('posts.create')}}">Add new Post</a>
@@ -41,7 +41,7 @@
                         </div>
                     @endif
                     <div class="col-md-10 col-lg-8 col-xl-8">
-                        <p>{{ $post->content }}</p>
+                        {!! $post->content !!}
                     </div>
                 </div>
             </div>
