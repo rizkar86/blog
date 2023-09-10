@@ -25,9 +25,22 @@
                             <h6 class="m-0 font-weight-bold text-primary ">DataTables Example</h6>
                         </div>
                         <div class="card-body">
-                           <div class="float-end mb-4">
+
+                           <div class="row">
+                           <div class="col-6">
                                 <a class="btn btn-primary" href="{{route('categories.create')}}">Add new Category</a>
                            </div>
+                            <!-- Earnings (Monthly) Card Example -->
+                            <div class="col-xl-3 col-md-6 mb-4 float-end">
+                                <form action="{{ route('categories.index') }}" method="POST">
+                                    @csrf
+                                    <div class="input-group">
+                                        <input type="text" name="search" class="form-control" placeholder="Search..." value="{{$search}}">
+                                        <button type="submit" class="btn btn-primary">  <i class="fas fa-search fa-fw"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
 
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -44,6 +57,7 @@
                                             <th>Name</th>
                                             <th>Details</th>
                                             <th>created_at</th>
+                                             <th>Actions</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -53,8 +67,8 @@
                                             <td>{{ substr($category->details, 0, 50) }}...</td>
                                             <td>{{$category->created_at}}</td>
                                             <td>
-                                                <a href="{{route('categories.edit', $category->id)}}" class="btn btn-info btn-sm">Edit</a>
-                                                <form action="{{route('categories.destroy', $category->id)}}" method="POST" class="d-inline">
+                                                <a href="{{route('categories.edit', $category)}}" class="btn btn-info btn-sm">Edit</a>
+                                                <form action="{{route('categories.destroy', $category)}}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
@@ -64,7 +78,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-
+                                {!! $categories->links('pagination::bootstrap-5') !!}
                             </div>
                         </div>
                     </div>

@@ -25,17 +25,19 @@
                             <h6 class="m-0 font-weight-bold text-primary ">Create Category</h6>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('categories.update', $category) }}" method="POST">
+                            <form action="{{ route('admin.users.update', $user) }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <div class="mb-3" >
-                                    <input type="text" name="name" class="form-control" value="{{$category->name}}" >
-                                </div>
+                                <label for="name">{{$user->name}}</label>
+                                <label for="email">{{$user->email}}</label>
                                 <div class="mb-3">
-                                    <label for="exampleFormControlTextarea1" class="form-label">Category details</label>
-                                    <textarea class="form-control" name="details" id="exampleFormControlTextarea1" rows="3">{{$category->details}}</textarea>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" name="admin" type="checkbox" id="flexSwitchCheckDefault"  @if ($user->admin == 1) checked @endif>
+                                        <label class="form-check-label" for="flexSwitchCheckDefault">Admin</label>
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">update</button>
+
                             </form>
                         </div>
                     </div>

@@ -55,8 +55,19 @@ Route::middleware('auth')->group(function () {
     Route::get('/my-posts', [ControllersPostController::class, 'myPosts'])->name('posts.myPosts');
     // route prfix admin
     Route::prefix('admin')->group(function () {
-        Route::any('/users', [UesrsController::class, 'index'])->name('users.index');
+
+        // create route for users
+        Route::get('users', [UesrsController::class, 'index'])->name('admin.users.index');
+        Route::post('users', [UesrsController::class, 'index'])->name('admin.users.index');
+        Route::get('users/create', [UesrsController::class, 'create'])->name('admin.users.create');
+        Route::post('users/store', [UesrsController::class, 'store'])->name('admin.users.store');
+        Route::get('users/{user}/edit', [UesrsController::class, 'edit'])->name('admin.users.edit');
+        Route::put('users/{user}/update', [UesrsController::class, 'update'])->name('admin.users.update');
+        Route::delete('users/{user}/destroy', [UesrsController::class, 'destroy'])->name('admin.users.destroy');
+        Route::get('users/{user}/show', [UesrsController::class, 'show'])->name('admin.users.show');
+
         Route::resource('categories', CategoryController::class);
+        Route::any('/categories', [CategoryController::class, 'index'])->name('categories.index');
         Route::resource('posts', PostController::class)->names([
             'index' => 'admin.posts.index',
             'create' => 'admin.posts.create',
@@ -65,7 +76,8 @@ Route::middleware('auth')->group(function () {
             'edit' => 'admin.posts.edit',
             'update' => 'admin.posts.update',
             'destroy' => 'admin.posts.destroy',
-        ]);;
+        ]);
+        Route::any('/posts', [PostController::class, 'index'])->name('admin.posts.index');
         Route::get('posts/filterByCategory/{id}', [PostController::class, 'filterByCategory'])->name('admin.posts.filterByCategory');
         Route::get('posts/filterByAuthor/{id}', [PostController::class, 'filterByAuthor'])->name('admin.posts.filterByAuthor');
         // Route delete post

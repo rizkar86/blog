@@ -25,7 +25,7 @@
                             <h6 class="m-0 font-weight-bold text-primary ">Create Post</h6>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('posts.store') }}" method="POST"  enctype="multipart/form-data">
+                            <form action="{{ route('admin.posts.store') }}" method="POST"  enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <select name="users[]"  class="selectpicker form-control" multiple aria-label="size 3 select example" data-placeholder="Choose users">
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label">Content</label>
-                                    <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="20"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary">add</button>
                             </form>

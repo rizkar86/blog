@@ -29,7 +29,7 @@
 
                                 <!-- Earnings (Monthly) Card Example -->
                                 <div class="col-xl-3 col-md-6 mb-4">
-                                    <form action="{{ route('users.index') }}" method="POST">
+                                    <form action="{{ route('admin.users.index') }}" method="POST">
                                         @csrf
                                         <div class="input-group">
                                             <input type="text" name="search" class="form-control" placeholder="Search..." value="{{$search}}">
@@ -48,6 +48,7 @@
                                             <th>email_verified_at</th>
                                             <th>is_admin</th>
                                             <th>created_at</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -57,6 +58,7 @@
                                             <th>email_verified_at</th>
                                             <th>is_admin</th>
                                             <th>created_at</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -65,8 +67,16 @@
                                             <td>{{$user->name}}</td>
                                             <td>{{$user->email}}</td>
                                             <td>{{$user->email_verified_at}}</td>
-                                            <td>{{$user->is_admin}}</td>
+                                            <td>{{$user->admin}}</td>
                                             <td>{{$user->created_at}}</td>
+                                            <td>
+                                                <a href="{{route('admin.users.edit', $user)}}" class="btn btn-info btn-sm">Edit</a>
+                                                <form action="{{route('admin.users.destroy', $user)}}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

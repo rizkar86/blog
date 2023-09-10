@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Rizkar Mohamed',
             'email' => 'eng.rizkar@gmail.com',
             'password' => bcrypt('12345678'),
+            'admin' => 1,
+
 
         ]);
 
@@ -49,6 +51,7 @@ class DatabaseSeeder extends Seeder
 
                     In conclusion, digital painting is a versatile and dynamic art form that offers a limitless canvas for your creativity. Whether you\'re painting for personal enjoyment or pursuing a professional career, the digital art world welcomes artists of all levels and backgrounds.',
                     'categories' => ['Art', 'Digital Painting'],
+                    'image' => '11.jpg'
                 ],
                 [
                     'slug' => 'the-magic-of-astrophotography',
@@ -73,6 +76,7 @@ class DatabaseSeeder extends Seeder
 
                     In conclusion, astrophotography offers a gateway to the awe-inspiring beauty of the night sky. Whether you\'re gazing at the moon, capturing star trails, or imaging distant galaxies, this hobby allows you to explore the cosmos from your own backyard. With dedication and practice, you can create stunning astrophotography that inspires wonder and appreciation for the universe.',
                     'categories' => ['Photography', 'Astrophotography'],
+                    'image' => '11.jpg'
                 ],
                 [
                     'slug' => 'the-joy-of-gardening',
@@ -121,6 +125,7 @@ class DatabaseSeeder extends Seeder
 
                     In conclusion, gardening is a rewarding journey that allows you to nurture life, create beauty, and connect with the natural world. Whether you\'re a seasoned gardener or just starting, cultivating green spaces can bring immense joy and fulfillment to your life.',
                     'categories' => ['Gardening', 'Wellness'],
+                    'image' => '11.jpg'
                 ],
                 [
 
@@ -162,6 +167,7 @@ class DatabaseSeeder extends Seeder
 
                     In conclusion, virtual reality opens the door to exciting new possibilities in entertainment, education, and beyond. Whether you\'re exploring virtual worlds or creating your own VR content, the immersive experiences that VR offers are sure to captivate your imagination.',
                     'categories' => ['Technology', 'Virtual Reality'],
+                    'image' => '11.jpg'
                 ],
                 [
 
@@ -201,6 +207,7 @@ class DatabaseSeeder extends Seeder
 
                     Effective time management is not just about getting more done; it's about achieving the right balance between productivity and well-being. By implementing these tips and continuously refining your time management skills, you can enhance your productivity, reduce stress, and achieve your goals more efficiently.",
                     'categories' => ['Productivity', 'Time Management'],
+                    'image' => '11.jpg'
                 ],
                 [
 
@@ -250,6 +257,7 @@ class DatabaseSeeder extends Seeder
 
                     In conclusion, regular exercise is a powerful tool for improving physical and mental health. It\'s not just about the way you look; it\'s about feeling your best and enjoying a healthier, more fulfilling life.',
                     'categories' => ['Health', 'Exercise'],
+                    'image' => '11.jpg'
                 ],
                 [
 
@@ -298,6 +306,7 @@ class DatabaseSeeder extends Seeder
 
                     In conclusion, budget travel is all about making smart choices and finding value in your experiences. By following these money-saving tips and maintaining a flexible and open-minded approach to travel, you can embark on exciting journeys without breaking the bank.",
                     'categories' => ['Travel', 'Budgeting'],
+                    'image' => '11.jpg'
                 ],
                 [
                     'title' => 'A Guide to Sustainable Living',
@@ -349,6 +358,7 @@ class DatabaseSeeder extends Seeder
 
                     In conclusion, adopting a sustainable lifestyle is a powerful way to reduce your environmental footprint and contribute to the preservation of our planet. Every small change you make in your daily life can have a positive and lasting impact on the environment.',
                     'categories' => ['Sustainability', 'Environment'],
+                    'image' => '11.jpg'
                 ],
                 [
                     'title' => 'The Art of Mindfulness Meditation',
@@ -404,53 +414,55 @@ class DatabaseSeeder extends Seeder
 
                     In a world filled with distractions and constant stimulation, mindfulness meditation offers a sanctuary of stillness and presence. By nurturing this practice, you embark on a transformative journey of self-discovery and well-being, enriching your life in ways you may have never imagined.",
                     'categories' => ['Mindfulness', 'Meditation'],
-                    ],
-                    [
-                        'title' => '10 Delicious and Healthy Breakfast Recipes',
-                        'slug' => '10-delicious-and-healthy-breakfast-recipes',
-                        'short_content' => 'Start your day with these nutritious and mouthwatering breakfast recipes that will keep you energized throughout the morning.',
-                        'content' => 'A nutritious breakfast is the perfect way to kickstart your day with energy and vitality. Whether you prefer a hearty meal or a quick and easy option, these ten delicious and healthy breakfast recipes will satisfy your taste buds and fuel your body.
+                    'image' => '11.jpg'
+                ],
+                [
+                    'title' => '10 Delicious and Healthy Breakfast Recipes',
+                    'slug' => '10-delicious-and-healthy-breakfast-recipes',
+                    'short_content' => 'Start your day with these nutritious and mouthwatering breakfast recipes that will keep you energized throughout the morning.',
+                    'content' => 'A nutritious breakfast is the perfect way to kickstart your day with energy and vitality. Whether you prefer a hearty meal or a quick and easy option, these ten delicious and healthy breakfast recipes will satisfy your taste buds and fuel your body.
 
-                        **1. Greek Yogurt Parfait**:
-                        Layer Greek yogurt with fresh berries, granola, and a drizzle of honey for a protein-packed and antioxidant-rich breakfast.
+                    **1. Greek Yogurt Parfait**:
+                    Layer Greek yogurt with fresh berries, granola, and a drizzle of honey for a protein-packed and antioxidant-rich breakfast.
 
-                        **2. Veggie Omelette**:
-                        Whisk eggs and sauté your favorite veggies like bell peppers, spinach, and tomatoes. Fold them into a fluffy omelette for a protein-packed breakfast.
+                    **2. Veggie Omelette**:
+                    Whisk eggs and sauté your favorite veggies like bell peppers, spinach, and tomatoes. Fold them into a fluffy omelette for a protein-packed breakfast.
 
-                        **3. Overnight Oats**:
-                        Combine rolled oats with almond milk, chia seeds, and your choice of sweetener. Refrigerate overnight and top with fruits and nuts in the morning for a convenient and filling breakfast.
+                    **3. Overnight Oats**:
+                    Combine rolled oats with almond milk, chia seeds, and your choice of sweetener. Refrigerate overnight and top with fruits and nuts in the morning for a convenient and filling breakfast.
 
-                        **4. Avocado Toast**:
-                        Spread ripe avocado on whole-grain toast and top with sliced tomatoes, a sprinkle of salt, and a dash of olive oil for a creamy and satisfying breakfast.
+                    **4. Avocado Toast**:
+                    Spread ripe avocado on whole-grain toast and top with sliced tomatoes, a sprinkle of salt, and a dash of olive oil for a creamy and satisfying breakfast.
 
-                        **5. Smoothie Bowl**:
-                        Blend your favorite fruits with Greek yogurt and a splash of almond milk. Pour into a bowl and top with granola, coconut flakes, and fresh berries.
+                    **5. Smoothie Bowl**:
+                    Blend your favorite fruits with Greek yogurt and a splash of almond milk. Pour into a bowl and top with granola, coconut flakes, and fresh berries.
 
-                        **6. Peanut Butter Banana Toast**:
-                        Spread natural peanut butter on whole-grain toast and add banana slices and a drizzle of honey for a delicious and protein-rich breakfast.
+                    **6. Peanut Butter Banana Toast**:
+                    Spread natural peanut butter on whole-grain toast and add banana slices and a drizzle of honey for a delicious and protein-rich breakfast.
 
-                        **7. Breakfast Burrito**:
-                        Scramble eggs with black beans, diced bell peppers, and a pinch of cumin. Wrap the mixture in a whole-grain tortilla for a savory and satisfying breakfast.
+                    **7. Breakfast Burrito**:
+                    Scramble eggs with black beans, diced bell peppers, and a pinch of cumin. Wrap the mixture in a whole-grain tortilla for a savory and satisfying breakfast.
 
-                        **8. Chia Seed Pudding**:
-                        Mix chia seeds with almond milk, vanilla extract, and a touch of maple syrup. Refrigerate until it thickens, then top with sliced fruits and nuts for a nutrient-dense breakfast.
+                    **8. Chia Seed Pudding**:
+                    Mix chia seeds with almond milk, vanilla extract, and a touch of maple syrup. Refrigerate until it thickens, then top with sliced fruits and nuts for a nutrient-dense breakfast.
 
-                        **9. Quinoa Breakfast Bowl**:
-                        Cook quinoa and top it with sliced bananas, chopped nuts, and a drizzle of maple syrup. Quinoa provides protein and fiber for long-lasting energy.
+                    **9. Quinoa Breakfast Bowl**:
+                    Cook quinoa and top it with sliced bananas, chopped nuts, and a drizzle of maple syrup. Quinoa provides protein and fiber for long-lasting energy.
 
-                        **10. Whole-Grain Pancakes**:
-                        Whip up a batch of whole-grain pancakes using whole wheat flour, oats, and a touch of cinnamon. Top with fresh fruit and a dollop of Greek yogurt.
+                    **10. Whole-Grain Pancakes**:
+                    Whip up a batch of whole-grain pancakes using whole wheat flour, oats, and a touch of cinnamon. Top with fresh fruit and a dollop of Greek yogurt.
 
-                        **Customize to Your Taste**:
-                        These breakfast recipes are versatile and can be customized to suit your taste preferences. Feel free to experiment with different fruits, vegetables, nuts, and spices to create variations that excite your palate.
+                    **Customize to Your Taste**:
+                    These breakfast recipes are versatile and can be customized to suit your taste preferences. Feel free to experiment with different fruits, vegetables, nuts, and spices to create variations that excite your palate.
 
-                        **Benefits of a Nutritious Breakfast**:
-                        A balanced breakfast provides essential nutrients and helps stabilize blood sugar levels, keeping you full and energized throughout the morning. It also kickstarts your metabolism, supports cognitive function, and promotes overall well-being.
+                    **Benefits of a Nutritious Breakfast**:
+                    A balanced breakfast provides essential nutrients and helps stabilize blood sugar levels, keeping you full and energized throughout the morning. It also kickstarts your metabolism, supports cognitive function, and promotes overall well-being.
 
-                        **Start Your Day Right**:
-                        Whether you prefer a quick smoothie or a leisurely omelette, starting your day with a healthy breakfast sets a positive tone for the rest of the day. These recipes are not only delicious but also nourishing, ensuring you have the energy and focus you need to tackle whatever comes your way.',
-                        'categories' => ['Food', 'Breakfast'],
-                    ]
+                    **Start Your Day Right**:
+                    Whether you prefer a quick smoothie or a leisurely omelette, starting your day with a healthy breakfast sets a positive tone for the rest of the day. These recipes are not only delicious but also nourishing, ensuring you have the energy and focus you need to tackle whatever comes your way.',
+                    'categories' => ['Food', 'Breakfast'],
+                    'image' => '11.jpg'
+                ]
             ];
         $categories = [];
 
@@ -467,7 +479,7 @@ class DatabaseSeeder extends Seeder
                 'slug' => $post['slug'],
                 'short_content' => $post['short_content'],
                 'content' => $post['content'],
-                'image' => 'https://source.unsplash.com/random/800x600',
+                'image' =>  $post['image'],
                 'published' => true,
             ]);
 

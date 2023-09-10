@@ -26,9 +26,9 @@
                         </div>
                         <div class="card-body">
                            <div class="float-end mb-4">
-                            <a class="btn btn-primary" href="{{route('posts.create')}}">Add new Post</a>
-                            <a class="btn btn-success" href="{{route('posts.edit', $post->id)}}">update the post</a>
-                            <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display: inline-block;">
+                            <a class="btn btn-primary" href="{{route('admin.posts.create')}}">Add new Post</a>
+                            <a class="btn btn-success" href="{{route('admin.posts.edit', $post->id)}}">update the post</a>
+                            <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST" style="display: inline-block;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete the post</button>
@@ -54,7 +54,7 @@
                                                             <span class="btn btn-outline-secondary">{{$category->name}}</span>
                                                         @endforeach
                                                     </p>
-                                                    {{$post->content}}
+                                                    {!! $post->content !!}
                                                 </div>
                                             </div>
                                         </div>

@@ -6,6 +6,12 @@ $(document).ready(function () {
         var url ='posts/filterByCategory/' + categoryId;
         fetchPosts(url, 'category', categoryId);
     });
+    $('#user').change(function () {
+        // Get the selected category ID
+        var userId = $(this).val();
+        var url ='posts/filterByAuthor/' + userId;
+        fetchPosts(url, 'user', userId);
+    });
 
 
   /*   $(document).on('click', '.category-span', function()  {

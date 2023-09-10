@@ -20,18 +20,13 @@
             <div class="row gx-4 gx-lg-5 ">
                 <div class=" col-md-10 col-lg-8 col-xl-8">
                     <div class="blog-posts">
-
                         @include('blog.data')
                     </div>
-
-
-
                 </div>
                <div class="col-md-2 col-lg-4 col-xl-4  pt-5">
                  @include('layouts.blog.rightside')
                </div>
             </div>
         </div>
-
         @include('layouts.blog.footer')
 

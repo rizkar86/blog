@@ -31,7 +31,7 @@
                         </div>
                         <img src="{{ asset('img/' . $post->image) }}" class="card-img-top" alt="..." style="height: 500px; width: 500px;" >
                         <div class="card-body">
-                            <form action="{{ route('posts.update', $post->id) }}" method="POST"  enctype="multipart/form-data">
+                            <form action="{{ route('admin.posts.update', $post) }}" method="POST"  enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="mb-3">
@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label">Content</label>
-                                    <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3">{{$post->content}}</textarea>
+                                    <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="20">{!!$post->content!!}</textarea>
                                     @if ($errors->has('content'))
                                         <div class="alert alert-danger mt-2">
                                             {{ $errors->first('content') }}

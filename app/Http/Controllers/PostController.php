@@ -12,8 +12,6 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
-
-
     /**
      * Show the form for creating a new resource.
      */
@@ -88,7 +86,7 @@ class PostController extends Controller
     {
         //
         $post = Post::find($id);
-        return view('blog.post', compact('post'));
+        return view('post.show', compact('post'));
     }
 
     /**
@@ -107,13 +105,15 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-
-
         $this->validate($request, [
             'title' => 'required',
             'content' => 'required',
             'categories' => 'required',
         ]);
+        // create slug form title
+        $slug= Str::slug($request->title);
+        // add slug to request
+        $request->merge(['slug' => $slug]);
         $content = nl2br($request->input('content'));
         $request->merge(['content' => $content]);
 
@@ -125,12 +125,9 @@ class PostController extends Controller
             {
                 $post->categories()->attach($category);
             }
-
-
         }
         if($request->hasFile('image'))
         {
-
             $image = $request->file('image');
             $name = $post->id . '.' . $image->getClientOriginalExtension();
 
@@ -155,7 +152,6 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->delete();
         return redirect()->route('blog.myPosts')->with('success', 'Post deleted successfully');
-
     }
 
     public function myPosts()
@@ -203,10 +199,7 @@ class PostController extends Controller
                      ->simplePaginate(5);
 
         return view('blog.index', compact('posts', 'query'));
-
     }
-
-
     /**
      * Store a newly created resource in storage.
      */
@@ -217,8 +210,6 @@ class PostController extends Controller
         $posts = $author->posts()->orderBy('created_at', 'desc')->simplePaginate(2);
         return view('blog.author', compact('author', 'posts'));
     }
-
-
     public function category(string $id)
     {
         //
