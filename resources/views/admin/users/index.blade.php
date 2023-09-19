@@ -47,7 +47,7 @@
                                             <th>Email</th>
                                             <th>email_verified_at</th>
                                             <th>is_admin</th>
-                                            <th>created_at</th>
+                                            <th>Posts's count</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -57,18 +57,18 @@
                                             <th>Email</th>
                                             <th>email_verified_at</th>
                                             <th>is_admin</th>
-                                            <th>created_at</th>
+                                            <th>Posts's count</th>
                                             <th>Actions</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         @foreach($users as $user)
                                         <tr>
-                                            <td>{{$user->name}}</td>
+                                            <td><a href="{{route('admin.users.show', $user)}}">{{$user->name}}</a></td>
                                             <td>{{$user->email}}</td>
                                             <td>{{$user->email_verified_at}}</td>
                                             <td>{{$user->admin}}</td>
-                                            <td>{{$user->created_at}}</td>
+                                            <td>{{ count($user->posts) }}</td>
                                             <td>
                                                 <a href="{{route('admin.users.edit', $user)}}" class="btn btn-info btn-sm">Edit</a>
                                                 <form action="{{route('admin.users.destroy', $user)}}" method="POST" class="d-inline">

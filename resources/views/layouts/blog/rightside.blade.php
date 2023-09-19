@@ -15,7 +15,7 @@
         <ul class="list-group list-group-light">
             @foreach ($categoriesWithMostPosts as $category)
                 <li class="list-group-item border-bottom border-0 ">
-                    <a href="{{ route('posts.category', $category->id) }}" >{{$category->name}}</a>
+                    <a href="{{ route('posts.categories', $category->slug) }}" >{{$category->name}}</a>
                     <span class="badge rounded-pill  text-dark float-end">( {{$category->posts_count}} )</span>
                 </li>
             @endforeach
@@ -27,7 +27,7 @@
         <ul class="list-group list-group-light">
             @foreach($usersWithMostPosts as $user)
                 <li class="list-group-item border-bottom border-0 ">
-                    <a href="{{ route('posts.author', $user->id) }}">{{$user->name}}</a>
+                    <a href="{{ route('posts.authors', $user->slug) }}">{{$user->name}}</a>
                     <span class="badge rounded-pill  text-dark float-end">( {{$user->posts_count}} )</span>
                 </li>
             @endforeach

@@ -28,7 +28,7 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('blog.post.addPost', compact( 'categories'));
+        return view('blog.posts.add', compact( 'categories'));
     }
 
     /**
@@ -36,7 +36,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'title' => 'required|unique:posts',
             'content' => 'required',
@@ -48,8 +47,6 @@ class PostController extends Controller
         $request->merge(['slug' => $slug]);
         $content = nl2br($request->input('content'));
         $request->merge(['content' => $content]);
-
-
         $post = Post::create($request->all());
         if($post)
         {
@@ -64,49 +61,43 @@ class PostController extends Controller
         }
         if($request->hasFile('image'))
         {
-
             $image = $request->file('image');
             $name = $post->id . '.' . $image->getClientOriginalExtension();
-
             $destinationPath = public_path('\img');
-
             $image->move($destinationPath, $name);
-
             $post->image = $name;
             $post->save();
         }
 
-        return redirect()->route('posts.show', $post->id)->with('success', 'Post updated successfully');
+        return redirect()->route('posts.show', $post->slug)->with('success', 'Post updated successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($slug)
     {
-        //
-        $post = Post::find($id);
-        return view('post.show', compact('post'));
+        $post = Post::where('slug', $slug)->firstOrFail();
+        return view('blog.posts.show', compact('post'));
     }
-
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($slug)
     {
         //
-        $post = Post::find($id);
+        $post = Post::where('slug', $slug)->firstOrFail();
         $categories = Category::all();
-        return view('blog.post.editPost', compact('post', 'categories'));
+        return view('blog.posts.edit', compact('post', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Post $post)
     {
         $this->validate($request, [
-            'title' => 'required',
+            'title' => 'required|unique:posts,title,' . $post->id,
             'content' => 'required',
             'categories' => 'required',
         ]);
@@ -116,8 +107,6 @@ class PostController extends Controller
         $request->merge(['slug' => $slug]);
         $content = nl2br($request->input('content'));
         $request->merge(['content' => $content]);
-
-        $post = Post::find($id);
         $post->update($request->all());
         if($post)
         {
@@ -130,35 +119,31 @@ class PostController extends Controller
         {
             $image = $request->file('image');
             $name = $post->id . '.' . $image->getClientOriginalExtension();
-
             $destinationPath = public_path('\img');
-
             $image->move($destinationPath, $name);
-
             $post->image = $name;
             $post->save();
         }
-
         // redirect to post show
-        return redirect()->route('posts.show', $post->id)->with('success', 'Post updated successfully');
+        return redirect()->route('posts.show', $post->slug)->with('success', 'Post updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($slug)
     {
         //
-        $post = Post::find($id);
+        $post = Post::where('slug', $slug)->firstOrFail();
         $post->delete();
-        return redirect()->route('blog.myPosts')->with('success', 'Post deleted successfully');
+        return redirect()->route('posts.myPosts')->with('success', 'Post deleted successfully');
     }
 
     public function myPosts()
     {
         $user = User::find(Auth::user()->id);
         $posts = $user->posts()->orderBy('created_at', 'desc')->simplePaginate(5);
-        return view('blog.post.myPosts', compact('posts'));
+        return view('blog.posts.myPosts', compact('posts'));
     }
     function fetchData(Request $request)
     {
@@ -203,19 +188,19 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function author(string $id)
+    public function author($slug)
     {
         //
-        $author = User::find($id);
+        $author = User::where('slug', $slug)->firstOrFail();
         $posts = $author->posts()->orderBy('created_at', 'desc')->simplePaginate(2);
         return view('blog.author', compact('author', 'posts'));
     }
-    public function category(string $id)
+    public function category($slug)
     {
         //
-
-        $category = Category::find($id);
+        $category = Category::where('slug', $slug)->firstOrFail();
         $posts = $category->posts()->orderBy('created_at', 'desc')->simplePaginate(5);
+
         return view('blog.category', compact('category', 'posts'));
     }
 }

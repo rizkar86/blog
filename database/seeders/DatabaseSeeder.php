@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'eng.rizkar@gmail.com',
             'password' => bcrypt('12345678'),
             'admin' => 1,
+            'slug' => Str::slug('Rizkar Mohamed')
 
 
         ]);
@@ -470,7 +472,10 @@ class DatabaseSeeder extends Seeder
                 $categories = array_merge($categories, $post['categories']);
             }
             foreach (array_unique($categories) as $category) {
-                Category::create(['name' => $category]);
+                Category::create([
+                    'name' => $category,
+                    'slug' => Str::slug($category)
+                ]);
             }
 
         foreach ($posts as $post) {

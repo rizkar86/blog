@@ -20,14 +20,15 @@ class CategoryController extends Controller
         $search = $request->input('search');
         if($search !='')
         {
-           $categories = Category::when($search, function ($query, $search) {
-               return $query->where('name', 'like', '%' . $search . '%');
-           })->paginate(5);
+          // get all category and ordder by posts count
+          $categories = Category::withCount('posts')->where('name', 'like', '%' . $search . '%')->orderBy('posts_count', 'desc')->paginate(5);
            $categories->appends(['search' => $search]);
         }
        else
        {
-           $categories = Category::paginate(5);
+        // get all category and ordder by posts count
+           $categories = Category::withCount('posts')->orderBy('posts_count', 'desc')->paginate(5);
+
        }
         return view('admin.categories.index', compact('categories', 'search'));
     }
@@ -75,10 +76,12 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Category $category)
     {
         //
+        $posts = $category->posts()->orderBy('created_at', 'desc')->simplePaginate(5);
 
+        return view('admin.categories.show', compact('category', 'posts'));
     }
 
     /**

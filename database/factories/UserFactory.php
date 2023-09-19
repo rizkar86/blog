@@ -17,8 +17,9 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $name = $this->faker->name;
         return [
-            'name' => $this->faker->name,
+            'name' => $name,
             'email_verified_at'=> now(),
             'email' => $this->faker->unique()->safeEmail,
             'password' => bcrypt('password'),
@@ -28,6 +29,7 @@ class UserFactory extends Factory
             'admin' => 0,
             'confirmed' => 0,
             'active' => 0,
+            'slug' => Str::slug($name),
 
         ];
     }

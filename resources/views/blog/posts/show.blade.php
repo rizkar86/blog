@@ -24,6 +24,11 @@
         <!-- Post Content-->
         <article class="mb-4">
             <div class="container px-4 px-lg-5">
+                @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     @if(Auth::check() &&  in_array(auth()->user()->id, $post->users->pluck('id')->toArray()))
                         <div class="col-md-10 col-lg-8 col-xl-8">

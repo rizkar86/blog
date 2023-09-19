@@ -18,15 +18,16 @@ class UesrsController extends Controller
          $search = $request->input('search');
          if($search !='')
          {
-            $users = User::when($search, function ($query, $search) {
-                return $query->where('name', 'like', '%' . $search . '%')
-                             ->orWhere('email', 'like', '%' . $search . '%');
-            })->paginate(5);
+               // get user with posts count
+            $users = User::withCount('posts')->where('name', 'like', '%' . $search . '%')->orWhere('email', 'like', '%' . $search . '%')->orderBy('posts_count', 'desc')->paginate(5);
             $users->appends(['search' => $search]);
          }
         else
         {
-            $users = User::paginate(5);
+
+            $users = User::withCount('posts')->orderBy('posts_count', 'desc')->paginate(5);
+
+
         }
          return view('admin.users.index', compact('users', 'search'));
      }
@@ -66,6 +67,12 @@ class UesrsController extends Controller
         User::create($request_data);
         session()->flash('success', 'User Added Successfully');
         return redirect()->route('users.index');
+    }
+    public function show(User $user)
+    {
+        //
+        $posts = $user->posts()->paginate(5);
+        return view('admin.users.show', compact('user', 'posts'));
     }
     public function edit(User $user)
     {

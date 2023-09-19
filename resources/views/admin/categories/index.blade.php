@@ -47,7 +47,7 @@
                                     <thead>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Details</th>
+                                            <th>Posts'count</th>
                                             <th>created_at</th>
                                             <th>Actions</th>
                                         </tr>
@@ -55,7 +55,7 @@
                                     <tfoot>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Details</th>
+                                            <th>Posts'count</th>
                                             <th>created_at</th>
                                              <th>Actions</th>
                                         </tr>
@@ -63,8 +63,8 @@
                                     <tbody>
                                         @foreach($categories as $category)
                                         <tr>
-                                            <td>{{$category->name}}</td>
-                                            <td>{{ substr($category->details, 0, 50) }}...</td>
+                                            <td><a href="{{route('categories.show', $category)}}">{{$category->name}}</a></td>
+                                            <td>{{ count($category->posts) }}</td>
                                             <td>{{$category->created_at}}</td>
                                             <td>
                                                 <a href="{{route('categories.edit', $category)}}" class="btn btn-info btn-sm">Edit</a>

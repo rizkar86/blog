@@ -25,21 +25,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ControllersPostController::class, 'index'])->name('posts.index');
 Route::get('posts/create', [ControllersPostController::class, 'create'])->name('posts.create');
 Route::post('posts/store', [ControllersPostController::class, 'store'])->name('posts.store');
-Route::get('posts/{id}', [ControllersPostController::class, 'show'])->name('posts.show');
-Route::get('posts/{id}/edit', [ControllersPostController::class, 'edit'])->name('posts.edit');
-Route::patch('posts/{id}/update', [ControllersPostController::class, 'update'])->name('posts.update');
-Route::delete('posts/{id}/delete', [ControllersPostController::class, 'destroy'])->name('posts.destroy');
+Route::get('posts/{slug}', [ControllersPostController::class, 'show'])->name('posts.show');
+Route::get('posts/{slug}/edit', [ControllersPostController::class, 'edit'])->name('posts.edit');
+Route::patch('posts/{post}/update', [ControllersPostController::class, 'update'])->name('posts.update');
+Route::delete('posts/{slug}/delete', [ControllersPostController::class, 'destroy'])->name('posts.destroy');
 
 
 Route::post('/fetch-data', [ControllersPostController::class, 'fetchData'])->name('pagination.fetch_data');
 Route::post('/categories/{category_id}/fetch-data', [ControllersPostController::class, 'fetchCategoriesData']);
 Route::post('/authors/{author_id}/fetch-data', [ControllersPostController::class, 'fetchAuthorsData']);
 
-Route::get('/categories/{id}', [ControllersPostController::class, 'category'])->name('posts.category');
-Route::get('/authors/{id}', [ControllersPostController::class, 'author'])->name('posts.author');
-
-
-
+Route::get('/categories/{slug}', [ControllersPostController::class, 'category'])->name('posts.categories');
+Route::get('/authors/{slug}', [ControllersPostController::class, 'author'])->name('posts.authors');
 
 
 //Route::resource('posts', ControllersPostController::class);
@@ -64,7 +61,7 @@ Route::middleware('auth')->group(function () {
         Route::get('users/{user}/edit', [UesrsController::class, 'edit'])->name('admin.users.edit');
         Route::put('users/{user}/update', [UesrsController::class, 'update'])->name('admin.users.update');
         Route::delete('users/{user}/destroy', [UesrsController::class, 'destroy'])->name('admin.users.destroy');
-        Route::get('users/{user}/show', [UesrsController::class, 'show'])->name('admin.users.show');
+        Route::get('users/{user}', [UesrsController::class, 'show'])->name('admin.users.show');
 
         Route::resource('categories', CategoryController::class);
         Route::any('/categories', [CategoryController::class, 'index'])->name('categories.index');
